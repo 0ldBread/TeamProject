@@ -64,7 +64,7 @@ public class CreditAccountTest {
 //                5_000,
 //                15
 //        );
-//        account.();
+//        account.pay(25_000);
 //        Assertions.assertThrows(IllegalArgumentException.class, () -> {
 //            account.();
 //        });
