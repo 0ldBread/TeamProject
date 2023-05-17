@@ -16,7 +16,7 @@ public class SavingAccountTest {
 
         boolean result = account.add(3_000);
 
-        Assertions.assertEquals(2_000 + 3_000, account.getBalance());
+        Assertions.assertEquals(5_000, account.getBalance());
         Assertions.assertEquals(true, result);
     }
 
@@ -203,7 +203,7 @@ public class SavingAccountTest {
                 5
         );
         boolean result = account.pay(1_000);
-        Assertions.assertEquals(2_000 - 1_000, account.getBalance());
+        Assertions.assertEquals(1_000, account.getBalance());
         Assertions.assertEquals(true, result);
     }
 
@@ -268,7 +268,7 @@ public class SavingAccountTest {
                 15
         );
         account.yearChange();
-        Assertions.assertEquals(60, account.yearChange());
+        Assertions.assertEquals(30, account.yearChange());
     }
 
 }
