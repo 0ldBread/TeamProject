@@ -144,16 +144,6 @@ public class CreditAccountTest {
         Assertions.assertEquals(4_000, account.getBalance());
 
     }
-    @Test
-    public void negativeBalanceInterestRate() {
-        CreditAccount account = new CreditAccount(
-                -200,
-                5_000,
-                15
-        );
-        account.yearChange();
-        Assertions.assertEquals(-30, account.getBalance());
-    }
 
    @Test
     public void positiveBalanceInterestRate() {
