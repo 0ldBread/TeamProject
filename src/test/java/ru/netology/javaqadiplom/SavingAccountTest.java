@@ -262,8 +262,8 @@ public class SavingAccountTest {
     @Test
     public void shouldCalcInterestInBalance() {
         SavingAccount account = new SavingAccount(
-                400,
-                500,
+                200,
+                100,
                 12_000,
                 15
         );
