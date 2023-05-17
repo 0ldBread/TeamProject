@@ -26,6 +26,42 @@ public class SavingAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
+
+        if (minBalance > maxBalance) {
+            throw new IllegalArgumentException(
+                    "Минимальный баланс не может быть больше максимального, а у вас: " + minBalance
+            );
+        }
+
+        if (minBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Минимальный баланс не может быть отрицательным, а у вас: " + minBalance
+            );
+        }
+
+        if (initialBalance > maxBalance) {
+            throw new IllegalArgumentException(
+                    "Изначальный баланс не может быть больше максимального, а у вас: " + initialBalance
+            );
+        }
+
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Изначальный баланс не может быть трицательным, а у вас: " + initialBalance
+            );
+        }
+
+        if (initialBalance < minBalance) {
+            throw new IllegalArgumentException(
+                    "Изначальный баланс не может быть меньше минимального, а у вас: " + initialBalance
+            );
+        }
+
+        if (maxBalance <= minBalance) {
+            throw new IllegalArgumentException(
+                    "Максимальный баланс не может быть меньше минимального, а у вас: " + maxBalance
+            );
+        }
         this.balance = initialBalance;
         this.minBalance = minBalance;
         this.maxBalance = maxBalance;
@@ -42,18 +78,19 @@ public class SavingAccount extends Account {
      * @param amount - сумма покупки
      * @return true если операция прошла успешно, false иначе.
      */
-    @Override
     public boolean pay(int amount) {
+        int initialBalance = balance;
         if (amount <= 0) {
             return false;
         }
         balance = balance - amount;
-        if (balance > minBalance) {
-            return true;
-        } else {
-            return false;
+        if (balance >= minBalance) {
+                return true;
+            } else {
+                balance = initialBalance;
+                return false;
+            }
         }
-    }
 
     /**
      * Операция пополнения карты на указанную сумму.
@@ -73,7 +110,7 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
-            balance = amount;
+            balance = amount + balance;
             return true;
         } else {
             return false;
