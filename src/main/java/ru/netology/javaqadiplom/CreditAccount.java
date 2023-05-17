@@ -24,10 +24,21 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
+        if (initialBalance <= 0) {
+            throw new IllegalArgumentException(
+                    "Начальный баланс для счёта не может быть отрицательным, а у вас: " + initialBalance
+            );
+        }
+        if (creditLimit < 0) {
+            throw new IllegalArgumentException(
+                    "Максимальная сумма которую можно задолжать банку не может быть отрицательной, а у вас: " + creditLimit
+            );
+        }
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
     }
+
 
     /**
      * Операция оплаты с карты на указанную сумму.
@@ -44,8 +55,7 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > -creditLimit) {
+        if (balance - amount > -creditLimit) {
             balance = -amount;
             return true;
         } else {
@@ -70,7 +80,7 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = amount;
+        balance += amount;
         return true;
     }
 
@@ -80,6 +90,7 @@ public class CreditAccount extends Account {
      * числу через отбрасывание дробной части (так и работает целочисленное деление).
      * Пример: если на счёте -200 рублей, то при ставке 15% ответ должен быть -30.
      * Пример 2: если на счёте 200 рублей, то при любой ставке ответ должен быть 0.
+     *
      * @return
      */
     @Override
@@ -87,6 +98,8 @@ public class CreditAccount extends Account {
 
         return balance / 100 * rate;
     }
+
+
 
     public int getCreditLimit() {
 
