@@ -71,15 +71,17 @@ public class SavingAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
+   
     @Test
-    public void minBalanceShouldBeZero() {
+    public void minBalanceCouldBeZero() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 0,
                 10_000,
                 5
         );
-        Assertions.assertEquals(2_000, account.getBalance());
+
+        Assertions.assertEquals(0, account.getMinBalance());
     }
 
 
