@@ -13,9 +13,9 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(3_000);
-
+        boolean result = account.add(3_000);
         Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(true,result);
     }
 
     @Test
@@ -26,9 +26,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(2_000);
+        boolean result = account.add(2_000);
 
         Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(true,result);
     }
 
     @Test
@@ -39,9 +40,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(4_000);
+        boolean result = account.add(4_000);
 
         Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(true,result);
     }
 
     @Test
@@ -52,9 +54,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(7_000);
+        boolean result = account.add(7_000);
 
         Assertions.assertEquals(-1_000, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -65,9 +68,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(6_000);
+        boolean result = account.add(6_000);
 
         Assertions.assertEquals(0, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -78,9 +82,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(6_000);
+        boolean result = account.add(6_000);
 
         Assertions.assertEquals(1_000, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -91,9 +96,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.add(1_000);
+        boolean result = account.add(1_000);
 
         Assertions.assertEquals(5_000, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -104,9 +110,10 @@ public class CreditAccountTest {
                 15
         );
 
-        account.pay(2_000);
+        boolean result = account.pay(2_000);
 
         Assertions.assertEquals(-1_000, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -116,8 +123,11 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
-        account.pay(1_000);
+
+        boolean result = account.pay(1_000);
+
         Assertions.assertEquals(0, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
@@ -127,8 +137,11 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
-        account.pay(1_000);
+
+        boolean result = account.pay(1_000);
+
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(true,result);
     }
 
     @Test
@@ -138,8 +151,11 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
-        account.pay(4_000);
+
+        boolean result = account.pay(4_000);
+
         Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(false,result);
     }
 
     @Test
