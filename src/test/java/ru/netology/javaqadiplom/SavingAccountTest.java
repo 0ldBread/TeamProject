@@ -14,9 +14,10 @@ public class SavingAccountTest {
                 5
         );
 
-        account.add(3_000);
+        boolean result = account.add(3_000);
 
         Assertions.assertEquals(2_000 + 3_000, account.getBalance());
+        Assertions.assertEquals(true, result);
     }
 
     @Test
@@ -27,8 +28,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.add(-3_000);
+        boolean result = account.add(-3_000);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
@@ -39,8 +41,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.add(11_000);
+        boolean result = account.add(11_000);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
@@ -51,8 +54,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.add(0);
+        boolean result = account.add(0);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
@@ -63,12 +67,12 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.add(0);
+        boolean result = account.add(0);
         Assertions.assertEquals(0, account.getBalance());
     }
 
     @Test
-    public void minBalanceShouldNotBeZero() {
+    public void minBalanceShouldBeZero() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 0,
@@ -77,6 +81,7 @@ public class SavingAccountTest {
         );
         Assertions.assertEquals(2_000, account.getBalance());
     }
+
 
     @Test
     public void rateShouldBeZero() {
@@ -195,8 +200,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.pay(1_000);
+        boolean result = account.pay(1_000);
         Assertions.assertEquals(2_000 - 1_000, account.getBalance());
+        Assertions.assertEquals(true, result);
     }
 
     @Test
@@ -207,8 +213,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.pay(0);
+        boolean result = account.pay(0);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
@@ -219,20 +226,22 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.pay(3_000);
+        boolean result = account.pay(3_000);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
-    public void shouldNotBeAmountNegative() {
+    public void amountShouldNotBeNegative() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 1_000,
                 10_000,
                 5
         );
-        account.pay(-2_000);
+        boolean result = account.pay(-2_000);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
@@ -243,8 +252,9 @@ public class SavingAccountTest {
                 10_000,
                 5
         );
-        account.pay(1_200);
+        boolean result = account.pay(1_200);
         Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(false, result);
     }
 
     @Test
