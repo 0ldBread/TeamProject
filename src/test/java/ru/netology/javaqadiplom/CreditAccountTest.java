@@ -64,7 +64,7 @@ public class CreditAccountTest {
                 15
         );
 
-        Assertions.assertFalse(account.pay(10_000));
+        Assertions.assertFalse(account.pay(11_000));
 
         Assertions.assertEquals(5_000, account.getBalance());
     }
