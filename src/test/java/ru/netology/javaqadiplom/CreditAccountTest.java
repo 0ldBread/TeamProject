@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class CreditAccountTest {
 
-    //@Test
+    @Test
     public void shouldAddToZeroBalance() {
         CreditAccount account = new CreditAccount(
                 0,
@@ -17,7 +17,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(3_000, account.getBalance());
     }
 
-   // @Test
+   @Test
     public void shouldAddToPositiveBalance() {
         CreditAccount account = new CreditAccount(
                 2_000,
@@ -30,7 +30,7 @@ public class CreditAccountTest {
 
     }
 
-    //@Test
+    @Test
     public void negativeReplenishment() {
         CreditAccount account = new CreditAccount(
                 3_000,
@@ -42,7 +42,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-    //@Test
+    @Test
     public void replenishmentToZero() {
         CreditAccount account = new CreditAccount(
                 3_000,
@@ -56,7 +56,7 @@ public class CreditAccountTest {
     }
 
 
-   // @Test
+   @Test
     public void shouldNotPayOverLimit() {
         CreditAccount account = new CreditAccount(
                 5_000,
@@ -68,7 +68,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(5_000, account.getBalance());
     }
-    //@Test
+    @Test
     public void shouldPayMoreThanInitialBalance() {
         CreditAccount account = new CreditAccount(
                 2_000,
@@ -81,7 +81,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(-1_000, account.getBalance());
     }
 
-    // @Test
+    @Test
     public void shouldBeZeroAfterPay() {
         CreditAccount account = new CreditAccount(
                 2_000,
@@ -94,7 +94,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    //@Test
+    @Test
     public void buyingFromAPositiveBalance() {
         CreditAccount account = new CreditAccount(
                 3_000,
@@ -107,7 +107,7 @@ public class CreditAccountTest {
 
     }
 
-    //@Test
+    @Test
     public void purchaseOverBalanceButNotLessThanCreditLimit() {
         CreditAccount account = new CreditAccount(
                 1_000,
@@ -120,7 +120,7 @@ public class CreditAccountTest {
 
     }
 
-    //@Test
+    @Test
     public void shouldNotBeZeroAmount() {
         CreditAccount account = new CreditAccount(
                 2_000,
@@ -132,7 +132,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(2_000, account.getBalance());
 
     }
-   // @Test
+   @Test
     public void shouldBeNegativeAmount() {
         CreditAccount account = new CreditAccount(
                 4_000,
@@ -144,7 +144,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(4_000, account.getBalance());
 
     }
-    // @Test
+    @Test
     public void negativeBalanceInterestRate() {
         CreditAccount account = new CreditAccount(
                 -200,
@@ -155,7 +155,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(-30, account.getBalance());
     }
 
-   // @Test
+   @Test
     public void positiveBalanceInterestRate() {
         CreditAccount account = new CreditAccount(
                 200,
@@ -165,7 +165,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.yearChange());
     }
 
-   // @Test
+   @Test
     public void zeroBalanceInterestRate() {
         CreditAccount account = new CreditAccount(
                 0,
