@@ -5,6 +5,7 @@ public class Account {
     protected int rate;
 
     public boolean pay(int amount) {
+
         return false;
     }
 
