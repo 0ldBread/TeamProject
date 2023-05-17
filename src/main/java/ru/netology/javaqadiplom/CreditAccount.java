@@ -39,6 +39,7 @@ public class CreditAccount extends Account {
         this.rate = rate;
     }
 
+
     /**
      * Операция оплаты с карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен уменьшиться
@@ -54,7 +55,9 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance - amount < -creditLimit) {
+
+        if (balance - amount > -creditLimit) {
+            balance -= amount;
             return false;
         } else {
             balance -= amount;
@@ -89,6 +92,7 @@ public class CreditAccount extends Account {
      * числу через отбрасывание дробной части (так и работает целочисленное деление).
      * Пример: если на счёте -200 рублей, то при ставке 15% ответ должен быть -30.
      * Пример 2: если на счёте 200 рублей, то при любой ставке ответ должен быть 0.
+     *
      * @return
      */
     @Override
@@ -99,6 +103,7 @@ public class CreditAccount extends Account {
             return -(balance * rate) / 100;
         }
     }
+
 
     public int getCreditLimit() {
 
