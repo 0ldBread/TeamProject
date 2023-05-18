@@ -55,15 +55,14 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-
-        if (balance - amount > -creditLimit) {
-            balance -= amount;
+        if (balance - amount < -creditLimit) {
             return false;
         } else {
             balance -= amount;
             return true;
         }
     }
+
 
     /**
      * Операция пополнения карты на указанную сумму.
